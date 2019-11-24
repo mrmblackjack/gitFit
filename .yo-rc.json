@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.oburkani.hci"
+    },
+    "jhipsterVersion": "6.3.1",
+    "applicationType": "monolith",
+    "baseName": "GitFit",
+    "packageName": "com.oburkani.hci",
+    "packageFolder": "com/oburkani/hci",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NTVmMWM2OWNlZGJhNTEzZWMwMmNmOTc2N2Y3ZDc3YjQwNjBkNGVmMTM3MDJkNTJlZGRkZTUzZGI1NWZiNzVhMjk5OTZkYjAxODFmYjJkYTlkYWE5ZjZkZWJjZTI2ZmNjYjIxNTcxMzdiOTA2MDM5NzIxZTQ3N2NmMTE4ODlkMjA=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "materia",
+    "clientThemeVariant": "primary",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}
