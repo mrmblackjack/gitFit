@@ -67,8 +67,8 @@ export class AppComponent {
 
   }
 
-  ngOnInit() {
-    // console.log(SampleJson);
+  plotAlcohol(){
+    years=[2010,2011,2012,2013,2014,2015,2016]
     let data = SampleJson
     let new_data={}
     console.log(data);
@@ -81,7 +81,7 @@ export class AppComponent {
         new_data[entry["dims"]["COUNTRY"]]["Values"].push(entry["Value"])
       }
     }
-    console.log(new_data);
+    // console.log(new_data);
     this.countries=Object.keys(new_data);
     this.chartData=[]
     for (let country of this.countries) {
@@ -91,10 +91,16 @@ export class AppComponent {
     this.years = new_data["Albania"]["Years"].reverse();
     this.lineChartData=this.chartData.slice(0,10)
     this.lineChartLabels=this.years;
+
+  }
+
+  ngOnInit() {
+    // console.log(SampleJson);
+    this.plotAlcohol()
   }
 
   public randomize(): void {
-    console.log(this.lineChartData);
+    // console.log(this.lineChartData);
     // for (let i = 0; i < this.lineChartData.length; i++) {
     //   for (let j = 0; j < this.lineChartData[i].data.length; j++) {
     //     this.lineChartData[i].data[j] = this.generateNumber(i);
