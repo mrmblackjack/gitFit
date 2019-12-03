@@ -4,7 +4,7 @@
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
+    <mat-menu #menu="matMenu" >
         <button mat-menu-item>
           <mat-icon>person</mat-icon>
           <span>My profile</span>
@@ -22,9 +22,15 @@
     <h1>GitFit</h1>
     <span class="menu-spacer"></span>
     <div>
-      <a mat-button [routerLink]="'/accounts'"> Update My Goals </a>
-      <a mat-button [routerLink]="'/create-account'"> Create a Group</a>
-      <a mat-button [routerLink]="'/contacts'"> Contacts </a>
-      <a mat-button [routerLink]="'/create-contact'"> Search Groups</a>
+      <a mat-button [routerLink]="'/accounts'" *ngIf = "env"> Update My Goals </a>
+      <a mat-button [routerLink]="'/create-account'" *ngIf = "env"> Create a Group</a>
+      <a mat-button [routerLink]="'/contacts'" *ngIf = "env">  Contacts </a>
+      <a mat-button [routerLink]="'/create-contact'" *ngIf = "env"> Search Groups</a>
+      <a mat-button [routerLink]="'/create-contact'" *ngIf = "env"> Search Groups</a>
+      <a mat-button [routerLink]="'/create-contact'" *ngIf = "env==false"> Sign in</a>
+      <a mat-button [routerLink]="'/create-contact'" *ngIf = "env==false"> Sign up</a>
+
+
+
     </div>
   </mat-toolbar-row>

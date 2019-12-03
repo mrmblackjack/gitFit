@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { NavComponent } from './nav/nav.component';
 import { MatMenuModule} from '@angular/material/menu';
+import { Globals } from './globals';
 
 
 
@@ -40,7 +41,7 @@ import { MatMenuModule} from '@angular/material/menu';
     MatMenuModule
 
   ],
-  providers: [],
+  providers: [Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
