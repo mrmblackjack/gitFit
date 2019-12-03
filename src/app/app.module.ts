@@ -1,3 +1,4 @@
+import { RegistrationComponent } from './registration/registration.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -26,6 +27,7 @@ import { Globals } from './globals';
   declarations: [
     AppComponent,
     NavComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
