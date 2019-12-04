@@ -1,3 +1,4 @@
+import { GetUpdatedUserService } from './../get-updated-user.service';
 import { SignInserviceService } from './../sign-inservice.service';
 import { Component, OnInit } from '@angular/core';
 import users from '../users.json';
@@ -9,7 +10,7 @@ import users from '../users.json';
 })
 export class DiaryComponent implements OnInit {
 
-  constructor(private navbarService:SignInserviceService) {}
+  constructor(private navbarService: SignInserviceService  ,private updateService:GetUpdatedUserService) {}
   username = "user1";
   user_data = users[this.username];
   weight: number;
@@ -19,6 +20,10 @@ export class DiaryComponent implements OnInit {
   alcohol_goal;
   cigarettes_goal;
   points=0;
+  goal_achieved1=false;
+  goal_achieved2=false;
+  goal_achieved3=false;
+  diary_filled=false;
 
 
   calculate(){
@@ -61,6 +66,8 @@ export class DiaryComponent implements OnInit {
 
     this.user_data["points"].push(this.points);
     console.log(this.user_data);
+    this.diary_filled=true;
+    
   
 
 
@@ -69,6 +76,10 @@ export class DiaryComponent implements OnInit {
 
   onSubmit(){
     this.calculate();
+    this.updateService.changeUserData(this.user_data);
+    console.log(this.updateService.new);
+
+
 
 
   }
