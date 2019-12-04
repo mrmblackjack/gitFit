@@ -20,15 +20,55 @@
         <div class="col-sm-6">
 
             <div class="card-body">
-              <p class="card-text"></p>
 
-              <div class="form-check">
-                  <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" value="">Option 1
-                  </label>
-              </div>
+            <div *ngIf="underweight">
+
+                <div class="form-check">
+                    <label class="form-check-label"> Goal: Gain 0.25 KG by next week.
+                        <input type="checkbox"[(ngModel)]="bmiPlus025"/> 
+                    </label>
+                </div>
+
+
+                <div class="form-check">
+                    <label class="form-check-label"> Goal: Gain 0.5 KG by next week.
+                        <input type="checkbox"[(ngModel)]="bmiPlus05"/> 
+                    </label>
+                </div>
+
+            </div>
+            
+            <div *ngIf="normalweight">
+
+                <div class="form-check">
+                    <label class="form-check-label"> Goal: Keep your weight. 
+                        <input type="checkbox"[(ngModel)]="bmiKeep"/> 
+                    </label>
+                </div>
+
+
+            </div>
+
+            <div *ngIf="overweight || obese">
+
+                <div class="form-check">
+                    <label class="form-check-label"> Goal: Lose 0.25 KG by next week.
+                        <input type="checkbox"[(ngModel)]="bmiMinus025"/> 
+                    </label>
+                </div>
+
+
+                <div class="form-check">
+                    <label class="form-check-label"> Goal: Lose 0.5 KG by next week.
+                        <input type="checkbox"[(ngModel)]="bmiMinus05"/> 
+                    </label>
+                </div>
+
+
+            </div>
+
+
         
-                
             </div>
 
         </div>
@@ -50,7 +90,45 @@
           <div class="col-sm-6">
   
               <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                  <div *ngIf="normalDrinker">
+
+                      <div class="form-check">
+                          <label class="form-check-label"> Goal: Do not drink alcohol next week.
+                              <input type="checkbox"[(ngModel)]="alcConsKeep0"/> 
+                          </label>
+                      </div>
+      
+      
+                      <div class="form-check">
+                          <label class="form-check-label"> Goal: Do not drink over the limit next week.
+                              <input type="checkbox"[(ngModel)]="alcConsKeepUnder14"/> 
+                          </label>
+                      </div>
+      
+      
+                  </div>
+
+
+                  <div *ngIf="heavyDrinker">
+
+                      <div class="form-check">
+                          <label class="form-check-label"> Goal: Reduce your alcohol intake by 5 % next week.
+                              <input type="checkbox"[(ngModel)]="alcConsReduce5"/> 
+                          </label>
+                      </div>
+      
+      
+                      <div class="form-check">
+                          <label class="form-check-label"> Goal: Reduce your alcohol intake by 10 % next week.
+                              <input type="checkbox"[(ngModel)]="alcConsReduce10"/> 
+                          </label>
+                      </div>
+      
+      
+                  </div>
+
+
               </div>
   
           </div>
@@ -72,17 +150,50 @@
             <div class="col-sm-6">
     
                 <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                    <div *ngIf="nonSmoker">
+
+                        <div class="form-check">
+                            <label class="form-check-label"> Goal: Do not smoke next week.
+                                <input type="checkbox"[(ngModel)]="cigUseKeep0"/> 
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="smoker">
+
+                        <div class="form-check">
+                            <label class="form-check-label"> Goal: Reduce the amount of cigarettes you smoke by 5 % next week.
+                                <input type="checkbox"[(ngModel)]="cigUseReduce5"/> 
+                            </label>
+                        </div>
+        
+        
+                        <div class="form-check">
+                            <label class="form-check-label"> Goal: Reduce the amount of cigarettes you smoke by 10 % next week.
+                                <input type="checkbox"[(ngModel)]="cigUseReduce10"/> 
+                            </label>
+                        </div>
+        
+        
+                    </div>
+
+                  
                 </div>
     
             </div>
+
+            <div class="col-sm-11"></div>
+            <div class="col-sm-1">
+               <button class="btn">Submit</button>
+            
+            </div>
             
     
-          </div>
+        </div>
+      
 
       
     </div>
-
-
-    <button (click)="doStuff()"></button>
   </div>
