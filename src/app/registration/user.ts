@@ -5,6 +5,6 @@ export class User {
     public sex: string;
     public weight: number;
     public height: number;
-    public alcoholCons: number;
-    public cigCons: number;
+    public alcCons: number;
+    public cigUse: number;
 }
