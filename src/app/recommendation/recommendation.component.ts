@@ -1,3 +1,4 @@
+import { GoalService } from './../goal.service';
 import { constants } from './../../assets/constants';
 import { RecommendationService } from './../recommendationService.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecommendationComponent implements OnInit {
 
-  constructor(private recService: RecommendationService) {}
+  constructor(private recService: RecommendationService, private goalService: GoalService) {}
 
   user = null;
 
@@ -97,9 +98,18 @@ export class RecommendationComponent implements OnInit {
   }
 
   setGoals() {
+
     this.setBmiGoal();
     this.setAlcConsGoal();
     this.setCigGoal();
+
+    const goalObj = {
+      bmiGoal: this.bmiGoal,
+      alcConsGoal: this.alcConsGoal,
+      cigGoal: this.cigUseGoal
+    };
+
+    this.goalService.setGoalData(goalObj);
   }
 
 
@@ -119,16 +129,16 @@ export class RecommendationComponent implements OnInit {
     this.obese = this.BMI > constants.BMI.OBESE_LOWER_LIMIT;
 
     if (this.underweight) {
-        this.bmiString = 'You are underweight.';
+        this.bmiString = 'You are underweight, try to gain some weight.';
         // + 0,25 or 0,5
     } else if (this.normalweight) {
-      this.bmiString = 'You are at an average weight';
+      this.bmiString = 'You are at an average weight.';
       // 1 goal keep weight
     } else if (this.overweight) {
-      this.bmiString = 'Lose some weight.';
+      this.bmiString = 'You are overweight, try to lose some weight.';
       // - 0,25 or 0.5
     } else {
-      this.bmiString = 'Damn ya fat.';
+      this.bmiString = 'You are obese, really try to lose some weight!';
       // - 0,25 or 0.5
 
     }
@@ -158,10 +168,10 @@ export class RecommendationComponent implements OnInit {
     this.nonSmoker = this.cigUse < constants.CIGARETTES.UNHEALTHY_LOWER_LIMIT;
 
     if (this.smoker) {
-      this.cigUseString = 'You smoke, STAHP.';
+      this.cigUseString = 'Smoking greatly increases the risk of cardiac and pulmonary diseases! ';
       // try to reduce by 5 %, if 5% < 1, then reduce by 1. Until you stop. 5 or 10
     } else {
-      this.cigUseString = 'GOOD BOI.';
+      this.cigUseString = 'You do not smoke, that is great!';
       // Keep at it. Considered non - smoker
     }
   }
