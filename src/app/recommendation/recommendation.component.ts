@@ -31,7 +31,6 @@ export class RecommendationComponent implements OnInit {
   bmiMinus025 = false;
   bmiMinus05 = false;
 
-
   alcCons = 0;
   alcConsString = '';
   alcConsGoal = 0;
@@ -59,6 +58,49 @@ export class RecommendationComponent implements OnInit {
 
   nonSmoker = false;
   smoker = false;
+
+
+  setBmiGoal() {
+    if (this.bmiKeep){
+      this.bmiGoal = this.user.weight;
+    } else if (this.bmiPlus025) {
+      this.bmiGoal = this.user.weight + 0.25;
+    } else if (this.bmiPlus05) {
+      this.bmiGoal = this.user.weight + 0.5;
+    } else if (this.bmiMinus025) {
+      this.bmiGoal = this.user.weight - 0.25;
+    } else if (this.bmiMinus05) {
+      this.bmiGoal = this.user.weight - 0.5;
+    }
+  }
+
+  setAlcConsGoal() {
+    if (this.alcConsKeep0) {
+      this.alcConsGoal = 0;
+    } else if (this.alcConsKeepUnder14) {
+      this.alcConsGoal = 14;
+    } else if (this.alcConsReduce5) {
+      this.alcConsGoal = this.user.alcCons - (this.user.alcCons * 0.05);
+    } else if (this.alcConsReduce10) {
+      this.alcConsGoal = this.user.alcCons - (this.user.alcCons * 0.1);
+    }
+  }
+
+  setCigGoal() {
+    if (this.cigUseKeep0) {
+      this.alcConsGoal = 0;
+    } else if (this.cigUseReduce5) {
+      this.alcConsGoal = this.user.cigUse - (this.user.cigUse * 0.05);
+    } else if (this.cigUseReduce10) {
+      this.alcConsGoal = this.user.cigUse - (this.user.cigUse * 0.1);
+    }
+  }
+
+  setGoals() {
+    this.setBmiGoal();
+    this.setAlcConsGoal();
+    this.setCigGoal();
+  }
 
 
 
@@ -123,8 +165,6 @@ export class RecommendationComponent implements OnInit {
       // Keep at it. Considered non - smoker
     }
   }
-
-
 
   ngOnInit() {
     this.recService.currentMessage.subscribe(user => this.user = user);
