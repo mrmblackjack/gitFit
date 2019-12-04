@@ -29,11 +29,10 @@
       <a mat-button [routerLink]="'/create-account'" *ngIf = "asideVisible"> Create a Group</a>
 
       <a mat-button [routerLink]="'/contacts'" *ngIf = "asideVisible">  Contacts </a>
-      <a mat-button  *ngIf = "env"> Search Groups</a>
-      <a mat-button  *ngIf = "env"> Search Groups</a>
-      <a mat-button [routerLink]="'/signin'" *ngIf = "asideVisible==false"  > Sign in</a>
-      <a mat-button  [routerLink]="'/register'"*ngIf = "asideVisible==false"> Sign up</a>
-      <a mat-button   (click)="toggleBar()"> Signin</a>
+      <a mat-button  *ngIf = "shouldShowNavbar"> Search Groups</a>
+      <a mat-button  *ngIf = "shouldShowNavbar"> Create a group</a>
+      <a mat-button [routerLink]="'/signin'" *ngIf = "!shouldShowNavbar"  > Sign in</a>
+      <a mat-button  [routerLink]="'/register'"*ngIf = "!shouldShowNavbar"> Sign up</a>
 
 
     </div>

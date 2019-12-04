@@ -1,13 +1,88 @@
 
 <div class="jumbotron">
-    <h1 class="display-4">Hello, {{user.username}}</h1>
-    <!-- <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </p> -->
-    {{BMI.toFixed(2)}}
-    {{bmiAdvice}}
-    <button (click)="calculateBMI()"></button>
+    <h1 class="display-4">Greetings, {{user.username}} !</h1>
+    <p class="lead">Here are your stats and some recommended goals: </p>
+  
+    <div class="card">
+
+
+      <div class="row">
+
+        <div class="col-sm-6">
+
+            <div class="card-body">
+                <h5 class="card-title">Calculated BMI:  {{BMI.toFixed(2)}}</h5>
+              <p class="card-text">{{bmiString}}</p>
+            </div>
+
+        </div>
+
+        <div class="col-sm-6">
+
+            <div class="card-body">
+              <p class="card-text"></p>
+
+              <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">Option 1
+                  </label>
+              </div>
+        
+                
+            </div>
+
+        </div>
+        
+
+      </div>
+
+      <div class="row">
+
+          <div class="col-sm-6">
+  
+              <div class="card-body">
+                  <h5 class="card-title">Alchol consumption: {{alcCons}}</h5>
+                <p class="card-text">{{alcConsString}}</p>
+              </div>
+  
+          </div>
+  
+          <div class="col-sm-6">
+  
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+  
+          </div>
+          
+  
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-6">
+    
+                <div class="card-body">
+                    <h5 class="card-title">Cigarette use: {{cigUse}} </h5>
+                  <p class="card-text">{{cigUseString}}</p>
+                </div>
+    
+            </div>
+    
+            <div class="col-sm-6">
+    
+                <div class="card-body">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+    
+            </div>
+            
+    
+          </div>
+
+      
+    </div>
+
+
+    <button (click)="doStuff()"></button>
   </div>

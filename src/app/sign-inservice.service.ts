@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -7,38 +7,12 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class SignInserviceService {
 
-//   sidebarVisibilityChange: Subject<boolean> = new Subject<boolean>();
-//   isSidebarVisible: boolean;
 
-//   private putka = new BehaviorSubject(false);
-//   currentPutka = this.putka.asObservable();
+private navbarVisibility = new BehaviorSubject(false);
+currentVisibility = this.navbarVisibility.asObservable();
 
-//   changeLoginData(login) {
-//     this.putka.next(login);
-//   }
-//   constructor()  {
-//     this.sidebarVisibilityChange.subscribe((value) => {
-//       this.isSidebarVisible = value
-//   });
-
-// }
-
-// toggleSidebarVisibilty() {
-//   this.sidebarVisibilityChange.next(!this.isSidebarVisible);
-
-// }
-isSidebarVisible: boolean;
-
-sidebarVisibilityChange: Subject<boolean> = new Subject<boolean>();
-
-constructor()  {
-    this.sidebarVisibilityChange.subscribe((value) => {
-        this.isSidebarVisible = value
-    });
-}
-
-toggleSidebarVisibility() {
-    this.sidebarVisibilityChange.next(!this.isSidebarVisible);
-}
+  changeNavbarVis(bool) {
+    this.navbarVisibility.next(bool);
+  }
 
 }

@@ -1,9 +1,9 @@
 import { SignInserviceService } from './../sign-inservice.service';
 import { NavComponent } from './../nav/nav.component';
 import { Component, OnInit , Input} from '@angular/core';
-import users from "../users.json";
+import users from '../users.json';
 import UserSignIn from './user';
-import { Router,RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { environment } from './../../environments/environment';
 
 @Component({
@@ -13,42 +13,27 @@ import { environment } from './../../environments/environment';
 
 })
 export class SigninComponent implements OnInit {
-  users_list = users;
+
+  constructor(private router: Router, private navbarService: SignInserviceService) {
+  }
+  usersList = users;
   model = new UserSignIn();
 
+  @Input()env = environment.isLogged;
 
-    get isSidebarVisible(): boolean {
-        return this.sidebarService.isSidebarVisible;
-    }
 
-    toggleSidebar() {
-        this.sidebarService.toggleSidebarVisibility()
-    }
+  onSubmit() {
+    for (const key in users) {
+      if (this.model.username === key) {
+         if (users[key].password === this.model.password) {
+           console.log('yeyy');
+           this.navbarService.changeNavbarVis(true);
 
-  @Input()env=environment.isLogged;
-
-  onSubmit(){
-    for (var key in users) {
-      if (this.model.username===key) {
-         if(users[key].password==this.model.password){
-           console.log("yeyy");
-            this.env=true;
-            console.log;
-
-           
 
          }
-      }else{
-        // NavComponent.setEnv(false);
-        // console.log(NavComponent.env1);
-
-
       }
   }
 
-  }
-
-  constructor(private router: Router, private sidebarService: SignInserviceService) { 
   }
 
   ngOnInit() {
