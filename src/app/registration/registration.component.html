@@ -12,11 +12,11 @@
           
           <div class="form-group">
               <label for="username">Username: </label>
-              <input type="text" class="form-control" id="username" required>
+              <input [(ngModel)]="model.username" type="text" class="form-control" id="username" required name="username">
           </div>
           <div class="form-group">
               <label for="password">Password: </label>
-              <input type="password" class="form-control" id="password" required name="pass">
+              <input [(ngModel)]="model.password" type="password" class="form-control" id="password" required name="pass">
           </div>
 
           <div class="form-group">
@@ -26,7 +26,7 @@
 
           <div class="form-group">
               <label for="ageSelect">Select Age group: </label>
-              <select class="form-control" id="ageSelect" default="" required>
+              <select [(ngModel)]="model.age" class="form-control" id="ageSelect" default="" required name="age">
                 <option value="" selected disabled>Please select</option>
                 <option> &lt; 15</option>
                 <option> > 15</option>
@@ -35,7 +35,7 @@
 
           <div class="form-group">
               <label for="sexSelect">Select Sex: </label>
-              <select class="form-control" id="sexSelect" default="" required>
+              <select [(ngModel)]="model.sex"  class="form-control" id="sexSelect" default="" required name="sex">
                 <option value="" selected disabled>Please select</option>
                 <option> Male </option>
                 <option> Female </option>
@@ -49,25 +49,25 @@
 
             <div class="form-group">
                 <label for="weight"> Weight (Kilograms): </label>
-                <input type="number" step="0.01" min="1.0" class="form-control" id="weight" required>
+                <input type="number" [(ngModel)]="model.weight"  step="0.01" min="1.0" class="form-control" id="weight" required name="weight">
             </div>
 
             <div class="form-group">
                 <label for="height"> Height (Centimeters): </label>
-                <input type="number" min="1" class="form-control" id="height" required>
+                <input type="number" min="1" [(ngModel)]="model.height"  class="form-control" id="height" required name="height">
             </div>
 
             <div class="form-group">
                 <label for="alcohol"> Alcohol consumption (Units / Week) </label>
-                <input type="number" min="0" class="form-control" id="alcohol" required>
+                <input type="number" min="0" [(ngModel)]="model.alcoholCons" class="form-control" id="alcohol" required name="alcoholCons">
             </div>
 
             <div class="form-group">
                 <label for="cigarettes"> Cigarette use (Cigarettes / Week) </label>
-                <input type="number" min="0" class="form-control" id="cigarettes" required>
+                <input type="number" min="0" [(ngModel)]="model.cigCons" class="form-control" id="cigarettes" required name="cigCons">
             </div>
 
-            <button type="submit" class="btn">Submit</button>
+            <button type="submit" (click)="submit()" class="btn">Submit</button>
         </div>
 
 

@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -37,7 +38,8 @@ import { Globals } from './globals';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule, 
+    FormsModule
 
   ],
   providers: [Globals],

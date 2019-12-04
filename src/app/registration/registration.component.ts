@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from './user';
+import { FormsModule } from '@angular/forms';
+import users from '../users.json';
 
 @Component({
   selector: 'app-registration',
@@ -6,6 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration.component.sass']
 })
 export class RegistrationComponent implements OnInit {
+
+  model = new User();
+
+  submit() {
+    console.log(this.model);
+  }
 
   constructor() { }
 
