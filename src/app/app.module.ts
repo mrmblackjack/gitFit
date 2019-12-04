@@ -18,6 +18,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChartsModule } from 'ng2-charts';
+import { GroupComponent } from './group/group.component';
+import { ChartComponent } from './chart/chart.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { ChartsModule } from 'ng2-charts';
       NavComponent,
       SigninComponent,
       RegistrationComponent,
-      RecommendationComponent
+      RecommendationComponent,
+      GroupComponent,
+      ChartComponent
    ],
    imports: [
       BrowserModule,

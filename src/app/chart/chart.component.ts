@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild, Input  } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
 import * as pluginAnnotations from 'chartjs-plugin-annotation';
@@ -20,7 +20,7 @@ export class ChartComponent implements OnInit {
   chartData;
   timestamps;
 
-  users = ["user1","user2","user3"]
+  @Input() users = ["user1","user2","user3"]
   category = "cigarettes";
   country="Bulgaria";
   barplot=false;
@@ -54,7 +54,6 @@ export class ChartComponent implements OnInit {
       datalabels: {
         anchor: 'end',
         align: 'end',
-        min: 0,
       }
     }
   };

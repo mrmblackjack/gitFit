@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class ="row">
+    <div class="col-sm-4">
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Points</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let member of groupMembers | keyvalue; let i = index">
+            <td>{{ i+1 }}</td>
+            <td>{{member.value.username}}</td>
+            <td>{{member.value.points[11]}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-primary btn-lg btn-block">Invite member</button>
+      <button type="button" class="btn btn-primary btn-lg btn-block">Leave group</button>
+    </div>
+    <div class="col-sm-8">
+      <button type="button" class="btn btn-outline-primary">View Weekly</button>
+      <app-chart [users]="groupMembersNames"></app-chart>
+    </div>
+  </div>
+</div>
