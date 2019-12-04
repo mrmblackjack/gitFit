@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { RegistrationComponent } from './registration/registration.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,9 +8,6 @@ import { AppComponent } from './app.component';
 import { ChartsModule } from 'ng2-charts';
 
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ChartDataSets, ChartOptions } from 'chart.js';
-import { Color, BaseChartDirective, Label } from 'ng2-charts';
-import * as pluginAnnotations from 'chartjs-plugin-annotation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -26,6 +25,7 @@ import { Globals } from './globals';
   declarations: [
     AppComponent,
     NavComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +38,8 @@ import { Globals } from './globals';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule, 
+    FormsModule
 
   ],
   providers: [Globals],
