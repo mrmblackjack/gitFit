@@ -20,7 +20,7 @@ export class RegistrationComponent implements OnInit {
   constructor(private recService: RecommendationService) { }
 
   ngOnInit() {
-    this.recService.currentMessage.subscribe(user => this.khh = user);
+    // this.recService.currentMessage.subscribe(user => this.khh = user);
   }
 
 }
