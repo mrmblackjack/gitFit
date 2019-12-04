@@ -1,3 +1,4 @@
+import { SignInserviceService } from './../sign-inservice.service';
 import { environment } from './../../environments/environment';
 import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -11,17 +12,20 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class NavComponent {
   env= environment.isLogged;
-  
-  
+  asideVisible=false;
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+    constructor(private sidebarService: SignInserviceService) {
+  
+    }
 
-  constructor(private breakpointObserver: BreakpointObserver) {
-    console.log(this.env);
-  }
+  
+    toggleBar(){
+      this.asideVisible=true;
+      console.log(this.asideVisible);
+    }
+
+  // constructor(private breakpointObserver: BreakpointObserver) {
+  //   console.log(this.env);
+  // }
 
 }
