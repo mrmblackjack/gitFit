@@ -1,0 +1,30 @@
+<div class="flex" *ngIf="chartData && !barplot" style="height:100%">
+  <div class="flex-item">
+    <div style="display: block;">
+    <canvas baseChart width="400" height="200"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                [plugins]="lineChartPlugins"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="flex" *ngIf="chartData && barplot" style="height:100%">
+  <div class="flex-item">
+    <div style="display: block">
+      <canvas baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div>
+  </div>
+</div>
+
+Works

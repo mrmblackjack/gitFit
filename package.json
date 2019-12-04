@@ -22,6 +22,7 @@
     "@ng-bootstrap/ng-bootstrap": "^5.1.4",
     "chart.js": "^2.9.3",
     "chartjs-plugin-annotation": "^0.5.7",
+    "chartjs-plugin-datalabels": "^0.7.0",
     "d3": "^5.14.2",
     "ng2-charts": "^2.3.0",
     "rxjs": "~6.4.0",

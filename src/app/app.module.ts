@@ -9,11 +9,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
 import * as pluginAnnotations from 'chartjs-plugin-annotation';
+import { ChartComponent } from './chart/chart.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -23,4 +25,5 @@ import * as pluginAnnotations from 'chartjs-plugin-annotation';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
