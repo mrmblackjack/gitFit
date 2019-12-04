@@ -6,6 +6,7 @@ import * as ChartAnnotation from 'chartjs-plugin-annotation';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 import usersData from 'users.json';
+import contryAlcohol from 'data.json';
 
 @Component({
   selector: 'app-chart',
@@ -19,6 +20,9 @@ export class ChartComponent implements OnInit {
   chartData;
   timestamps;
 
+  users = ["user1","user2","user3"]
+  category = "cigarettes";
+  country="Bulgaria";
   barplot=false;
 
   countries;
@@ -30,8 +34,6 @@ export class ChartComponent implements OnInit {
     scales : {
       yAxes: [{
          ticks: {
-            // max : 92,
-            // min: 88
           }
       }]
     }
@@ -45,11 +47,14 @@ export class ChartComponent implements OnInit {
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
-    scales: { xAxes: [{}], yAxes: [{}] },
+    scales: { xAxes: [{}], yAxes: [{
+    ticks:{min:0, max:450}
+  }] },
     plugins: {
       datalabels: {
         anchor: 'end',
         align: 'end',
+        min: 0,
       }
     }
   };
@@ -65,20 +70,40 @@ export class ChartComponent implements OnInit {
 
 
   plotUsers(users, category){
+    category = "points"
     this.chartData=[]
-    for (let user of users){
-      this.chartData.push({data:usersData[user][category]["data"], label: user})
+    if(!(category==="points")){
+      for (let user of users){
+        this.chartData.push({data:usersData[user][category]["data"], label: user})
+      }
+    }
+
+    else{
+      this.lineChartOptions["scales"]["yAxes"][0]["ticks"]["max"]=450
+      this.lineChartOptions["scales"]["yAxes"][0]["ticks"]["min"]=0
+      for (let user of users){
+        this.chartData.push({data:usersData[user]["points"], label: user})
+      }
     }
     this.lineChartData=this.chartData;
     let sortedTimestamps = this.getSortedTimestamps(users)
     this.lineChartLabels=this.timestampsToDateStrings(sortedTimestamps);
+
     this.padData(users, category, sortedTimestamps)
   }
 
   padData(users, category, sortedTimestamps){
     let padIndeces = [];
+    let userData=[];
     for (let user of users){
-      let userData = usersData[user][category]["data"];
+      userData=[];
+      // console.log(usersData);
+      if(!(category==="points")){
+        userData = usersData[user][category]["data"];
+      }
+      else{
+        userData = usersData[user]["points"];
+      }
       let userTimestamps = usersData[user]["timestamps"];
       padIndeces = [];
       for (let timestamp of userTimestamps){
@@ -106,7 +131,7 @@ export class ChartComponent implements OnInit {
   plotBarChart(users){
     let points = []
     for (let user of users){
-      points.push(usersData[user]["points"])
+      points.push(usersData[user]["points"][points.length])
     }
     console.log(points)
     this.chartData=[{data:points, label:"Points"}]
@@ -114,16 +139,46 @@ export class ChartComponent implements OnInit {
     this.barChartLabels = users;
   }
 
-  plot(data,goals,timestamps){
-    let min = Math.min(...data)
-    let max = Math.max(...data)
-    let dateStrings = this.timestampsToDateStrings(timestamps)
-    // console.log(dates);
-    this.lineChartOptions.scales.yAxes[0].ticks.min = min-2;
-    this.lineChartOptions.scales.yAxes[0].ticks.max = max+2;
-    this.chartData=[{data:data, label:"Weight"},{data:goals, label:"Weight Goals"}]
-    this.lineChartData=this.chartData;
-    this.lineChartLabels=dateStrings;
+  getCountryLatestYearAlcohol(country){
+    let new_data={}
+    for (let entry of contryAlcohol["fact"]) {
+      if (!new_data[entry["dims"]["COUNTRY"]]){
+          new_data[entry["dims"]["COUNTRY"]]={"Years":[], "Values":[]}
+      }
+      if(entry["dims"]["ALCOHOLTYPE"]==="All types"){
+        new_data[entry["dims"]["COUNTRY"]]["Years"].push(entry["dims"]["YEAR"])
+        new_data[entry["dims"]["COUNTRY"]]["Values"].push(entry["Value"])
+      }
+    }
+    // console.log(country)
+    // console.log(new_data[country]);
+    return new_data[country]["Values"][0];
+  }
+
+  plotUser(user, category, country){
+      let data = usersData[user][category]["data"]
+      let goals = usersData[user][category]["goals"]
+      let timestamps = usersData[user]["timestamps"]
+      let dateStrings = this.timestampsToDateStrings(timestamps)
+      let countryAlc = []
+      if (category==="alcohol" || category==="cigarettes"){
+        this.lineChartOptions["scales"]["yAxes"][0]["ticks"]["min"]=0;
+      }
+      if (country!=false && category==="alcohol"){
+        let countryAlcConsumption = this.getCountryLatestYearAlcohol(country)
+        countryAlcConsumption=Math.round(countryAlcConsumption*1000*100/1000/52)
+        for (let i of timestamps){
+          countryAlc.push(countryAlcConsumption)
+        }
+        this.chartData=[{data:data, label:category},{data:goals, label:category + " goals"},{data:countryAlc, label:country}]
+        this.lineChartData=this.chartData;
+        this.lineChartLabels=dateStrings;
+      }
+      else{
+        this.chartData=[{data:data, label:category},{data:goals, label:category + " goals"}]
+        this.lineChartData=this.chartData;
+        this.lineChartLabels=dateStrings;
+      }
   }
 
   timestampsToDateStrings(timestamps){
@@ -133,9 +188,18 @@ export class ChartComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.plot([90, 89.70, 89.70, 89.50, 89.60], [90, 89.75, 89.50, 89.60, 89.35,89.45], [1572825600, 1573430400, 1574035200, 1574640000, 1575244800, 1575849600]);
-      this.plotUsers(["user1", "user2"], "weight")
-      // this.plotBarChart(["user1", "user2"])
+    if(this.barplot){
+      this.plotBarChart(this.users)
+    }
+    else{
+      if(this.category==="points" || this.users.length > 1){
+        this.plotUsers(this.users,this.category)
+      }
+      else if(this.users.length === 1){
+        this.plotUser(this.users[0],this.category, this.country)
+      }
+    }
+    // this.getCountryLatestYearAlcohol("Bulgaria")
   }
 
   public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
