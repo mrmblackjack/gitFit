@@ -18,31 +18,36 @@ import { MatListModule } from '@angular/material/list';
 import { NavComponent } from './nav/nav.component';
 import { MatMenuModule} from '@angular/material/menu';
 import { Globals } from './globals';
+import { RecommendationComponent } from './recommendation/recommendation.component';
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavComponent,
-    RegistrationComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ChartsModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatMenuModule, 
-    FormsModule
-
-  ],
-  providers: [Globals],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      NavComponent,
+      RegistrationComponent,
+      RecommendationComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      ChartsModule,
+      BrowserAnimationsModule,
+      LayoutModule,
+      MatToolbarModule,
+      MatButtonModule,
+      MatSidenavModule,
+      MatIconModule,
+      MatListModule,
+      MatMenuModule,
+      FormsModule
+   ],
+   providers: [
+      Globals
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }
