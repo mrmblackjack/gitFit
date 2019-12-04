@@ -20,7 +20,7 @@ export class NavComponent {
 
   
     toggleBar(){
-      this.asideVisible=true;
+      this.asideVisible=!this.asideVisible;
       console.log(this.asideVisible);
     }
 
