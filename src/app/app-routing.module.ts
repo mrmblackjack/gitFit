@@ -1,3 +1,4 @@
+import { GroupComponent } from './group/group.component';
 import { HomeComponent } from './home/home.component';
 import { RecommendationComponent } from './recommendation/recommendation.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -9,7 +10,8 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'register', component:  RegistrationComponent },
   { path: 'recommend', component:  RecommendationComponent },
-  {path: 'home', component: HomeComponent}
+  {path: 'home', component: HomeComponent},
+  {path: 'group', component: GroupComponent}
 
 ];
 
