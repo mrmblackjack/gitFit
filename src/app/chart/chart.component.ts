@@ -23,7 +23,7 @@ export class ChartComponent implements OnInit {
   @Input() users = ["user1","user2","user3"]
   category = "cigarettes";
   country="Bulgaria";
-  barplot=false;
+  @Input() barplot=false;
 
   countries;
   years;
@@ -130,9 +130,8 @@ export class ChartComponent implements OnInit {
   plotBarChart(users){
     let points = []
     for (let user of users){
-      points.push(usersData[user]["points"][points.length])
+      points.push(usersData[user]["points"][usersData[user]["points"].length-1])
     }
-    console.log(points)
     this.chartData=[{data:points, label:"Points"}]
     this.barChartData=this.chartData;
     this.barChartLabels = users;
@@ -186,7 +185,7 @@ export class ChartComponent implements OnInit {
     return dateStrings
   }
 
-  ngOnInit() {
+  init(){
     if(this.barplot){
       this.plotBarChart(this.users)
     }
@@ -198,10 +197,19 @@ export class ChartComponent implements OnInit {
         this.plotUser(this.users[0],this.category, this.country)
       }
     }
-    // this.getCountryLatestYearAlcohol("Bulgaria")
+  }
+
+  ngOnChanges() {
+    this.init()
+  }
+
+  ngOnInit() {
+    this.init()
   }
 
   public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
   }
+
+
 }

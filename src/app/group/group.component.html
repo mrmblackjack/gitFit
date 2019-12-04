@@ -22,8 +22,8 @@
       <button type="button" class="btn btn-primary btn-lg btn-block">Leave group</button>
     </div>
     <div class="col-sm-8">
-      <button type="button" class="btn btn-outline-primary">View Weekly</button>
-      <app-chart [users]="groupMembersNames"></app-chart>
+      <button type="button" class="btn btn-outline-primary" (click)="toggleWeekly()">View Weekly</button>
+      <app-chart [users]="groupMembersNames" [barplot]="barChart"></app-chart>
     </div>
   </div>
 </div>

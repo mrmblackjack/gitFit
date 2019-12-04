@@ -11,6 +11,7 @@ import { ChartComponent } from '../chart/chart.component';
 export class GroupComponent implements OnInit {
 
   groupName = "Pulnozurnest tashak"
+  barChart = true
   groupMembersNames=["user1","user2","user3","user4"]
   // groupMembersNames=["user1","user2","user3"]
   groupMembers=[]
@@ -25,12 +26,10 @@ export class GroupComponent implements OnInit {
       this.groupMembers[i]["username"]=this.groupMembersNames[i]
     }
     this.groupMembers = this.groupMembers.sort((x,y)=>y.points[11]-x.points[11])
-    console.log(this.groupMembers)
-    console.log(this.groupMembers)
   }
 
   toggleWeekly(){
-    
+    this.barChart=!this.barChart
   }
 
 
