@@ -1,3 +1,4 @@
+import { RecommendationService } from './../recommendationService.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from './user';
 import { FormsModule } from '@angular/forms';
@@ -10,15 +11,17 @@ import users from '../users.json';
 })
 export class RegistrationComponent implements OnInit {
 
-  model = new User();
+  model = new User() as any;
+  khh = null;
 
   submit() {
-    console.log(this.model);
+    this.recService.changeUserData(this.model);
   }
 
-  constructor() { }
+  constructor(private recService: RecommendationService) { }
 
   ngOnInit() {
+    this.recService.currentMessage.subscribe(user => this.khh = user);
   }
 
 }
