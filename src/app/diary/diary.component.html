@@ -1,4 +1,4 @@
-<form  oninput='passConf.setCustomValidity(passConf.value != pass.value ? "Passwords do not match." : "")'>
+<form>
 
     <div class="row">
       
@@ -6,23 +6,23 @@
 
           <div class="form-group">
               <label for="weight"> Weight (Kilograms): </label>
-              <input type="number" [(ngModel)]="model.weight"  step="0.01" min="1.0" class="form-control" id="weight" required name="weight">
+              <input type="number" [(ngModel)]="weight"  step="0.01" min="1.0" class="form-control" id="weight" required name="weight">
           </div>
 
 
           <div class="form-group">
               <label for="alcohol"> Alcohol consumption (Units / Week) </label>
-              <input type="number" min="0" [(ngModel)]="model.alcoholCons" class="form-control" id="alcohol" required name="alcoholCons">
+              <input type="number"  [(ngModel)]="alcohol_unit" min="0"  class="form-control" id="alcohol"  name="alcoholCons">
           </div>
 
           <div class="form-group">
               <label for="cigarettes"> Cigarette use (Cigarettes / Week) </label>
-              <input type="number" min="0" [(ngModel)]="model.cigCons" class="form-control" id="cigarettes" required name="cigCons">
+              <input type="number" min="0"  [(ngModel)]="cigarette_use" class="form-control" id="cigarettes"  name="cigCons">
           </div>
           <div class="col-sm-12"></div>
           <div class="row">
               <div class="col-sm-9"></div>
-                <button type="submit" (click)="submit()" class="btn">Submit</button>
+                <button type="submit" (click)="onSubmit()" class="btn">Submit</button>
 
           </div>
         

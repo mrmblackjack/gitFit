@@ -1,3 +1,4 @@
+import { SignInserviceService } from './../sign-inservice.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private avbarService:SignInserviceService) {}
+  username = "User 1";
 
   ngOnInit() {
+    this.avbarService.changeNavbarVis(true);
+
   }
+
 
 }
