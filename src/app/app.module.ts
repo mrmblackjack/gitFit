@@ -20,6 +20,8 @@ import { AppComponent } from './app.component';
 import { ChartsModule } from 'ng2-charts';
 import { GroupComponent } from './group/group.component';
 import { ChartComponent } from './chart/chart.component';
+import { HomeComponent } from './home/home.component';
+import { DiaryComponent } from './diary/diary.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { ChartComponent } from './chart/chart.component';
       RegistrationComponent,
       RecommendationComponent,
       GroupComponent,
-      ChartComponent
+      ChartComponent,
+      HomeComponent,
+      DiaryComponent
    ],
    imports: [
       BrowserModule,

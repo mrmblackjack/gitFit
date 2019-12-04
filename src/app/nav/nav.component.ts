@@ -12,11 +12,15 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class NavComponent implements OnInit {
 
-    constructor(private navbarService: SignInserviceService) {}
+    constructor(private navbarService: SignInserviceService) {
+    this.navbarService.currentVisibility.subscribe(visible => this.shouldShowNavbar = visible);
+
+    }
   shouldShowNavbar = false;
 
 
+  ngOnChanges(){
+  }
   ngOnInit() {
-    this.navbarService.currentVisibility.subscribe(visible => this.shouldShowNavbar = visible);
   }
 }

@@ -27,7 +27,9 @@ export class SigninComponent implements OnInit {
       if (this.model.username === key) {
          if (users[key].password === this.model.password) {
            console.log('yeyy');
-           this.navbarService.changeNavbarVis(true);
+           
+           this.router.navigate(["/","home"]);
+
 
 
          }
