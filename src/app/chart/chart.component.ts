@@ -54,6 +54,7 @@ export class ChartComponent implements OnInit {
       datalabels: {
         anchor: 'end',
         align: 'end',
+        min: 0,
       }
     }
   };
