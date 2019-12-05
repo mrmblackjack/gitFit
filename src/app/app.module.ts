@@ -24,6 +24,7 @@ import { HomeComponent } from './home/home.component';
 import { DiaryComponent } from './diary/diary.component';
 import { AboutComponent } from './about/about.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
    declarations: [
@@ -36,7 +37,8 @@ import { AboutComponent } from './about/about.component';
       ChartComponent,
       HomeComponent,
       DiaryComponent,
-      AboutComponent
+      AboutComponent,
+
    ],
    imports: [
       BrowserModule,
@@ -50,13 +52,15 @@ import { AboutComponent } from './about/about.component';
       MatIconModule,
       MatListModule,
       MatMenuModule,
-      FormsModule
+      FormsModule,
+      NgbModule
    ],
    providers: [
       Globals
    ],
    bootstrap: [
-      AppComponent
+      AppComponent,
+
    ]
 })
 export class AppModule {

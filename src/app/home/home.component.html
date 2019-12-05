@@ -11,14 +11,31 @@
         <button type="button" class="btn btn-secondary" (click)="setCatWeight()">Weight</button>
         <button type="button" class="btn btn-secondary" (click)="setCatAlc()">Alcohol</button>
         <button type="button" class="btn btn-secondary" (click)="setCatCig()">Cigarettes</button>
+
+
+        <div ngbDropdown class="d-inline-block" *ngIf="countrySelect">
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Select Country</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="selectAfg()">Afghanistan</button>
+            <button ngbDropdownItem (click)="selectBG()">Bulgaria</button>
+            <button ngbDropdownItem (click)="selectRus()">Russia</button>
+            <button ngbDropdownItem (click)="selectUK()">United Kingdom</button>
+            <button ngbDropdownItem (click)="selectUSA()">USA</button>
+            <button ngbDropdownItem (click)="selectPol()">Poland</button>
+          </div>
+        </div>
+
       </div>
-      <app-chart [users]="user" [category]="category" [obj]="obj" [goal]="goal" [diary]="diary"></app-chart>
+
+      <app-chart [users]="user" [category]="category" [obj]="obj" [goal]="goal" [diary]="diary" [country]="country"></app-chart>
       <!-- <button type="button" class="btn btn-primary btn-lg btn-block" (click)="log()">Log</button> -->
     </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-6">
-      groups
-  </div>
+<div class="row" style="margin-left:2%">
+    <div class="col-sm-6">
+      <h2>Groups</h2>
+      <button type="button" class="btn btn-secondary" [routerLink]="'/group'">Goal Masters</button>
+        <!-- <a  [routerLink]="'/group'">Goal Masters</a> -->
+    </div>
 </div>

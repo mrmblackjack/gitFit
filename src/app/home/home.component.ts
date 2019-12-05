@@ -22,6 +22,11 @@ export class HomeComponent implements OnInit {
   category="weight"
   diary;
   goal
+  countrySelect=false;
+  dropdown
+  countries=["Bulg","USA","UK"]
+  shouldShowNavbar = false;
+  country="Bulgaria"
 
   ngOnInit() {
     console.log(this.user);
@@ -44,16 +49,40 @@ export class HomeComponent implements OnInit {
 
   setCatWeight(){
     this.category="weight"
-    console.log(1)
+    this.countrySelect=false;
   }
 
   setCatAlc(){
     this.category="alcohol"
-    console.log(2)
+    this.countrySelect=true;
   }
   setCatCig(){
     this.category="cigarettes"
-    console.log(3)
+    this.countrySelect=false;
+  }
+  selectAfg(){
+    this.country="Afghanistan"
+  }
+
+  selectPol(){
+    this.country="Poland"
+  }
+
+  selectBG(){
+    this.country="Bulgaria"
+  }
+  selectRus(){
+    this.country="Russian Federation"
+  }
+  selectUK(){
+    this.country="United Kingdom of Great Britain and Northern Ireland"
+  }
+  selectUSA(){
+    this.country="United States of America"
+  }
+
+  hehe(asd){
+    console.log(asd)
   }
 
   log(){
@@ -61,6 +90,4 @@ export class HomeComponent implements OnInit {
     console.log(this.goal)
     console.log(this.diary)
   }
-
-
 }
