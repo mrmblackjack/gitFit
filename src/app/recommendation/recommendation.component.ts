@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { GoalService } from './../goal.service';
 import { constants } from './../../assets/constants';
 import { RecommendationService } from './../recommendationService.service';
 import { Component, OnInit } from '@angular/core';
+
 
 
 
@@ -12,7 +14,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecommendationComponent implements OnInit {
 
-  constructor(private recService: RecommendationService, private goalService: GoalService) {}
+  constructor(private router:Router, private recService: RecommendationService, private goalService: GoalService) {
+
+  }
 
   user = null;
 
@@ -110,6 +114,7 @@ export class RecommendationComponent implements OnInit {
     };
 
     this.goalService.setGoalData(goalObj);
+    this.router.navigate(["/","home"])
   }
 
 
