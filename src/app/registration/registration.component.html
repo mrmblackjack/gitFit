@@ -59,12 +59,12 @@
 
             <div class="form-group">
                 <label for="alcohol"> Alcohol consumption (Units / Week) </label>
-                <input type="number" min="0" [(ngModel)]="model.alcoholCons" class="form-control" id="alcohol" required name="alcoholCons">
+                <input type="number" min="0" [(ngModel)]="model.alcCons" class="form-control" id="alcohol" required name="alcCons">
             </div>
 
             <div class="form-group">
                 <label for="cigarettes"> Cigarette use (Cigarettes / Week) </label>
-                <input type="number" min="0" [(ngModel)]="model.cigCons" class="form-control" id="cigarettes" required name="cigCons">
+                <input type="number" min="0" [(ngModel)]="model.cigUse" class="form-control" id="cigarettes" required name="cigUse">
             </div>
 
             <button type="submit" (click)="submit()" class="btn">Submit</button>
