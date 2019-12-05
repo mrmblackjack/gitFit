@@ -10,12 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
 
     constructor(private navbarService: SignInserviceService) {
-    this.navbarService.currentVisibility.subscribe(visible => this.shouldShowNavbar = visible);
 
     }
 
   shouldShowNavbar = false;
 
+  logout() {
+    this.navbarService.changeNavbarVis(false);
+    this.navbarService.changeUsernameVis(null);
+  }
+
   ngOnInit() {
+    this.navbarService.currentVisibility.subscribe(visible => this.shouldShowNavbar = visible);
+
   }
 }

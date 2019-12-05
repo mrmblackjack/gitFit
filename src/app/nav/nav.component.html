@@ -25,10 +25,16 @@
       <a mat-button *ngIf = "shouldShowNavbar"> Update My Goals </a>
       <a mat-button *ngIf = "shouldShowNavbar"> Create a Group</a>
 
+
       <a mat-button  *ngIf = "shouldShowNavbar"> Search Groups</a>
       <a mat-button [routerLink]="'/signin'" *ngIf = "!shouldShowNavbar"  > Sign in</a>
       <a mat-button  [routerLink]="'/register'"*ngIf = "!shouldShowNavbar"> Sign up</a>
 
 
+
     </div>
+    <a mat-button (click)="logout()" [routerLink]="'/'" *ngIf = "shouldShowNavbar"> Logout</a>
+
+
+    
   </mat-toolbar-row>

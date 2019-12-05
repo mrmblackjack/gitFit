@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private avbarService:SignInserviceService) {}
-  username = "User 1";
+  constructor(private avbarService: SignInserviceService) {}
+  username = 'User 1';
 
   ngOnInit() {
-    this.avbarService.changeNavbarVis(true);
+    this.avbarService.name.subscribe(name => this.username = name);
 
   }
 
