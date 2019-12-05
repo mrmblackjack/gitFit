@@ -10,7 +10,7 @@ import { ChartComponent } from '../chart/chart.component';
 })
 export class GroupComponent implements OnInit {
 
-  groupName = "Pulnozurnest tashak"
+  groupName = "Goal masters"
   barChart = true
   groupMembersNames=["user1","user2","user3","user4"]
   // groupMembersNames=["user1","user2","user3"]

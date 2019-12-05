@@ -67,8 +67,8 @@ export class DiaryComponent implements OnInit {
     this.user_data["points"].push(this.points);
     console.log(this.user_data);
     this.diary_filled=true;
-    
-  
+
+
 
 
   }
@@ -76,7 +76,8 @@ export class DiaryComponent implements OnInit {
 
   onSubmit(){
     this.calculate();
-    this.updateService.changeUserData(this.user_data);
+    let newDiary = {"weight": this.weight,"alcohol":this.alcohol_unit,"cigarettes":this.cigarette_use}
+    this.updateService.changeUserData(newDiary);
     console.log(this.updateService.new);
 
 

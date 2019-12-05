@@ -20,10 +20,12 @@ export class ChartComponent implements OnInit {
   chartData;
   timestamps;
 
-  @Input() users = ["user1","user2","user3"]
-  category = "cigarettes";
-  country="Bulgaria";
+  @Input() users// = ["user1","user2","user3"]
+  @Input() category = "alcohol";
+  @Input() country="Bulgaria";
   @Input() barplot=false;
+  @Input() goal;
+  @Input() diary;
 
   countries;
   years;
@@ -78,6 +80,7 @@ export class ChartComponent implements OnInit {
     }
 
     else{
+      console.log(users)
       this.lineChartOptions["scales"]["yAxes"][0]["ticks"]["max"]=450
       this.lineChartOptions["scales"]["yAxes"][0]["ticks"]["min"]=0
       for (let user of users){
@@ -179,6 +182,41 @@ export class ChartComponent implements OnInit {
       }
   }
 
+  plotUserObject(user,goal, diary, category){
+    console.log(user)
+    console.log(goal)
+    let goalDataWeight=[user.weight,goal.bmiGoal]
+    let goalDataAlc = [user.alcCons,goal.alcConsGoal]
+    let goalDataCig = [user.cigUse,goal.cigGoal]
+
+    let dataWeight = goalDataWeight.slice(0,1)
+    let dataAlc = goalDataAlc.slice(0,1)
+    let dataCig = goalDataCig.slice(0,1)
+    if(diary!=false){
+      dataWeight.push(diary["weight"])
+      dataAlc.push(diary["alcohol"])
+      dataCig.push(diary["cigarettes"])
+    }
+    console.log(dataWeight);
+    if(category==="weight"){
+      this.chartData=[{data:dataWeight, label:category},{data:goalDataWeight, label:category + " goals"}]
+    }
+    else if(category==="alcohol"){
+      this.chartData=[{data:dataAlc, label:category},{data:goalDataAlc, label:category + " goals"}]
+      // this.lineChartOptions["scales"]["yAxes"][0]["ticks"]["max"]=450
+      this.lineChartOptions["scales"]["yAxes"][0]["ticks"]["min"]=0
+    }
+    else if(category==="cigarettes"){
+      this.chartData=[{data:dataCig, label:category},{data:goalDataCig, label:category + " goals"}]
+      // this.lineChartOptions["scales"]["yAxes"][0]["ticks"]["max"]=450
+      this.lineChartOptions["scales"]["yAxes"][0]["ticks"]["min"]=0
+    }
+
+    this.lineChartData=this.chartData;
+    this.lineChartLabels=["12/05/2019","12/05/2019"];
+
+  }
+
   timestampsToDateStrings(timestamps){
     let dates = timestamps.map(x => new Date(x*1000));
     let dateStrings = dates.map(x => (x.getDate() + "/" + x.getMonth() + "/" + x.getFullYear()));
@@ -186,20 +224,29 @@ export class ChartComponent implements OnInit {
   }
 
   init(){
-    if(this.barplot){
-      this.plotBarChart(this.users)
-    }
-    else{
-      if(this.category==="points" || this.users.length > 1){
-        this.plotUsers(this.users,this.category)
+    console.log(typeof this.users)
+    if (this.users!="none"){
+      console.log(this.users)
+      if(this.barplot){
+        this.plotBarChart(this.users)
       }
-      else if(this.users.length === 1){
-        this.plotUser(this.users[0],this.category, this.country)
+      else if(typeof this.users === typeof {}){
+        // console.log("correct");
+        this.plotUserObject(this.users, this.goal, this.diary, this.category)
+      }
+      else{
+        if(this.category==="points" || this.users.length > 1){
+          this.plotUsers(this.users,this.category)
+        }
+        else if(this.users.length === 1){
+          this.plotUser(this.users[0],this.category, this.country)
+        }
       }
     }
   }
 
   ngOnChanges() {
+    console.log("chart change")
     this.init()
   }
 

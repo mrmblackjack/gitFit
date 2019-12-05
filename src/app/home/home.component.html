@@ -1,16 +1,24 @@
 <h5 style="margin-left:1%; margin-top:1%;"> Hello, {{username}} !</h5>
 
 <div class="row">
-    <div class ="col-sm-4 " style="margin-top:1%; text-align:left; margin-left:2%; ">
+    <div class ="col-sm-4" style="margin-top:1%; text-align:left; margin-left:2%; ">
         <h5><b>Diary entry</b></h5>
-        <app-diary></app-diary>          
-          
+        <app-diary></app-diary>
+
     </div>
-  
-    <div class="col-sm-6" style="height:100%">
-        graphs
+    <div class="col-sm-7">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" (click)="setCatWeight()">Weight</button>
+        <button type="button" class="btn btn-secondary" (click)="setCatAlc()">Alcohol</button>
+        <button type="button" class="btn btn-secondary" (click)="setCatCig()">Cigarettes</button>
+      </div>
+      <app-chart [users]="user" [category]="category" [goal]="goal" [diary]="diary"></app-chart>
+      <!-- <button type="button" class="btn btn-primary btn-lg btn-block" (click)="log()">Log</button> -->
     </div>
 </div>
-<div class="col-sm-6">
-    <a  [routerLink]="'/group'">Goal Masters</a>
+
+<div class="row">
+  <div class="col-sm-6">
+      groups
+  </div>
 </div>
