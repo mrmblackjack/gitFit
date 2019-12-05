@@ -1,3 +1,4 @@
+import { AboutComponent } from './about/about.component';
 import { GroupComponent } from './group/group.component';
 import { HomeComponent } from './home/home.component';
 import { RecommendationComponent } from './recommendation/recommendation.component';
@@ -10,8 +11,9 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'register', component:  RegistrationComponent },
   { path: 'recommend', component:  RecommendationComponent },
-  {path: 'home', component: HomeComponent},
-  {path: 'group', component: GroupComponent}
+  { path: 'home', component: HomeComponent },
+  { path: 'group', component: GroupComponent },
+  { path: '', component: AboutComponent }
 
 ];
 

@@ -93,11 +93,11 @@ export class RecommendationComponent implements OnInit {
 
   setCigGoal() {
     if (this.cigUseKeep0) {
-      this.alcConsGoal = 0;
+      this.cigUseGoal = 0;
     } else if (this.cigUseReduce5) {
-      this.alcConsGoal = this.user.cigUse - (this.user.cigUse * 0.05);
+      this.cigUseGoal = this.user.cigUse - (this.user.cigUse * 0.05);
     } else if (this.cigUseReduce10) {
-      this.alcConsGoal = this.user.cigUse - (this.user.cigUse * 0.1);
+      this.cigUseGoal = this.user.cigUse - (this.user.cigUse * 0.1);
     }
   }
 

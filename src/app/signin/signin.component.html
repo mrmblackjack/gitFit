@@ -2,9 +2,9 @@
 <div class="wrapper" style="display: inline-block; margin-top:10%;">
     <form #login = "ngForm" (ngSubmit) = "onSubmit(login.value)" >
      <h2 class="form-signin-heading">Sign In</h2>
-      <input type="text" class="form-control" [(ngModel)]="model.username" placeholder="Username"  name="name"required="" autofocus="" />
+      <input type="text" class="form-control" [(ngModel)]="model.username" placeholder="Username"  name="name"required autofocus="" />
       <br>
-      <input type="password" class="form-control" [(ngModel)]="model.password" name="password"  placeholder="Password" required=""/>      
+      <input type="password" class="form-control" [(ngModel)]="model.password" name="password"  placeholder="Password" required/>      
       <br>
       <button  type="submit" click="toggleSidebar()">Login</button>   
     </form>

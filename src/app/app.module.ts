@@ -22,6 +22,7 @@ import { GroupComponent } from './group/group.component';
 import { ChartComponent } from './chart/chart.component';
 import { HomeComponent } from './home/home.component';
 import { DiaryComponent } from './diary/diary.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { DiaryComponent } from './diary/diary.component';
       GroupComponent,
       ChartComponent,
       HomeComponent,
-      DiaryComponent
+      DiaryComponent,
+      AboutComponent
    ],
    imports: [
       BrowserModule,
