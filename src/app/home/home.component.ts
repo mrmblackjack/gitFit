@@ -11,7 +11,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-<<<<<<< HEAD
   constructor(private avbarService:SignInserviceService,
       private recService:RecommendationService,
       private goalService:GoalService,
@@ -45,13 +44,6 @@ export class HomeComponent implements OnInit {
     this.category="cigarettes"
     console.log(3)
   }
-=======
-  constructor(private avbarService: SignInserviceService) {}
-  username = 'User 1';
-
-  ngOnInit() {
-    this.avbarService.name.subscribe(name => this.username = name);
->>>>>>> 8f4cbf4d0c396b32a78b8063b6b42170ffba900c
 
   log(){
     console.log(this.user)
