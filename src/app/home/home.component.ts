@@ -23,11 +23,13 @@ export class HomeComponent implements OnInit {
   goal
 
   ngOnInit() {
-    console.log(this.user)
+    console.log(this.user);
     this.avbarService.changeNavbarVis(true);
+    this.avbarService.name.subscribe(name => this.username = name);
+
     this.recService.currentMessage.subscribe(user => this.user = user);
     this.goalService.currentGoalObj.subscribe(goal => this.goal = goal);
-    this.getUpdatedUserService.new.subscribe(diary => this.diary = diary)
+    this.getUpdatedUserService.new.subscribe(diary => this.diary = diary);
     console.log(this.user)
   }
 
