@@ -1,7 +1,7 @@
 import { RecommendationService } from './../recommendationService.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from './user';
-import {Router} from "@angular/router"
+import {Router} from '@angular/router'
 
 
 @Component({
@@ -24,7 +24,6 @@ export class RegistrationComponent implements OnInit {
   constructor(private recService: RecommendationService, private router: Router) { }
 
   ngOnInit() {
-    // this.recService.currentMessage.subscribe(user => this.khh = user);
   }
 
 }

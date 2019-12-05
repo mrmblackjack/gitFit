@@ -1,3 +1,4 @@
+import { SignInserviceService } from './../sign-inservice.service';
 import { Router } from '@angular/router';
 import { GoalService } from './../goal.service';
 import { constants } from './../../assets/constants';
@@ -14,7 +15,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecommendationComponent implements OnInit {
 
-  constructor(private router:Router, private recService: RecommendationService, private goalService: GoalService) {
+  constructor(private router: Router, private recService: RecommendationService, private signInService: SignInserviceService,
+              private goalService: GoalService) {
 
   }
 
@@ -66,7 +68,7 @@ export class RecommendationComponent implements OnInit {
 
 
   setBmiGoal() {
-    if (this.bmiKeep){
+    if (this.bmiKeep) {
       this.bmiGoal = this.user.weight;
     } else if (this.bmiPlus025) {
       this.bmiGoal = this.user.weight + 0.25;
@@ -93,15 +95,15 @@ export class RecommendationComponent implements OnInit {
 
   setCigGoal() {
     if (this.cigUseKeep0) {
-      this.alcConsGoal = 0;
+      this.cigUseGoal = 0;
     } else if (this.cigUseReduce5) {
-      this.alcConsGoal = this.user.cigUse - (this.user.cigUse * 0.05);
+      this.cigUseGoal = this.user.cigUse - (this.user.cigUse * 0.05);
     } else if (this.cigUseReduce10) {
-      this.alcConsGoal = this.user.cigUse - (this.user.cigUse * 0.1);
+      this.cigUseGoal = this.user.cigUse - (this.user.cigUse * 0.1);
     }
   }
 
-  setGoals() {
+  onSubmit() {
 
     this.setBmiGoal();
     this.setAlcConsGoal();
@@ -114,7 +116,9 @@ export class RecommendationComponent implements OnInit {
     };
 
     this.goalService.setGoalData(goalObj);
-    this.router.navigate(["/","home"])
+    this.signInService.changeUsernameVis(this.user.username);
+    this.signInService.changeNavbarVis(true);
+    this.router.navigate(['/', 'home']);
   }
 
 
