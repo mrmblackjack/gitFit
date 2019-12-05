@@ -1,9 +1,8 @@
 import { SignInserviceService } from './../sign-inservice.service';
-import { NavComponent } from './../nav/nav.component';
 import { Component, OnInit , Input} from '@angular/core';
-import users from '../users.json';
+import users from 'users.json';
 import UserSignIn from './user';
-import { Router, RouterModule, Routes } from '@angular/router';
+import { Router} from '@angular/router';
 import { environment } from './../../environments/environment';
 
 @Component({
@@ -26,9 +25,9 @@ export class SigninComponent implements OnInit {
     for (const key in users) {
       if (this.model.username === key) {
          if (users[key].password === this.model.password) {
-           console.log('yeyy');
-           
-           this.router.navigate(["/","home"]);
+          this.navbarService.changeNavbarVis(true);
+          this.navbarService.changeUsernameVis(this.model.username);
+          this.router.navigate(['/', 'home']);
 
 
 
