@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   username = "User 1";
   user;
+  obj;
   category="weight"
   diary;
   goal
@@ -30,6 +31,14 @@ export class HomeComponent implements OnInit {
     this.recService.currentMessage.subscribe(user => this.user = user);
     this.goalService.currentGoalObj.subscribe(goal => this.goal = goal);
     this.getUpdatedUserService.new.subscribe(diary => this.diary = diary);
+
+    if (this.user!="none"){
+      this.obj=true;
+    }
+    else{
+      this.user=[this.username]
+    }
+
     console.log(this.user)
   }
 

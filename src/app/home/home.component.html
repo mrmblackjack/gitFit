@@ -12,13 +12,13 @@
         <button type="button" class="btn btn-secondary" (click)="setCatAlc()">Alcohol</button>
         <button type="button" class="btn btn-secondary" (click)="setCatCig()">Cigarettes</button>
       </div>
-      <app-chart [users]="user" [category]="category" [goal]="goal" [diary]="diary"></app-chart>
+      <app-chart [users]="user" [category]="category" [obj]="obj" [goal]="goal" [diary]="diary"></app-chart>
       <!-- <button type="button" class="btn btn-primary btn-lg btn-block" (click)="log()">Log</button> -->
     </div>
 </div>
 
 <div class="row">
-    <div class="col-sm-6">
-        <a  [routerLink]="'/group'">Goal Masters</a>
-    </div>
+  <div class="col-sm-6">
+      groups
+  </div>
 </div>

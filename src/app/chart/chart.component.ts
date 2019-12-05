@@ -21,6 +21,7 @@ export class ChartComponent implements OnInit {
   timestamps;
 
   @Input() users// = ["user1","user2","user3"]
+  @Input() obj = false;
   @Input() category = "alcohol";
   @Input() country="Bulgaria";
   @Input() barplot=false;
@@ -225,13 +226,14 @@ export class ChartComponent implements OnInit {
 
   init(){
     console.log(typeof this.users)
+    console.log(this.users)
     if (this.users!="none"){
       console.log(this.users)
       if(this.barplot){
         this.plotBarChart(this.users)
       }
-      else if(typeof this.users === typeof {}){
-        // console.log("correct");
+      else if(this.obj){
+        console.log("bug")
         this.plotUserObject(this.users, this.goal, this.diary, this.category)
       }
       else{
@@ -239,6 +241,7 @@ export class ChartComponent implements OnInit {
           this.plotUsers(this.users,this.category)
         }
         else if(this.users.length === 1){
+          console.log("correct")
           this.plotUser(this.users[0],this.category, this.country)
         }
       }
