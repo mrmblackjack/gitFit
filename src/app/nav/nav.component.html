@@ -5,32 +5,27 @@
       <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu" >
-        <button mat-menu-item>
+        <button [routerLink]="'/home'" mat-menu-item>
           <mat-icon>person</mat-icon>
-          <span>My profile</span>
+          <span  >My profile</span>
         </button>
-        <button mat-menu-item disabled>
+        <button [routerLink]="'/group'" mat-menu-item>
           <mat-icon>group</mat-icon>
           <span>My groups</span>
         </button>
-        <button mat-menu-item>
-          <mat-icon>graphic_eq</mat-icon>
-          <span>My statistics</span>
-        </button>
-        <button >
-
+        <button [routerLink]="'/'" mat-menu-item>
+          <mat-icon>stars</mat-icon>
+          <span>About</span>
         </button>
       </mat-menu>
       
     <h1>GitFit</h1>
     <span class="menu-spacer"></span>
     <div>
-      <a mat-button [routerLink]="'/accounts'" *ngIf = "asideVisible"> Update My Goals </a>
-      <a mat-button [routerLink]="'/create-account'" *ngIf = "asideVisible"> Create a Group</a>
+      <a mat-button *ngIf = "shouldShowNavbar"> Update My Goals </a>
+      <a mat-button *ngIf = "shouldShowNavbar"> Create a Group</a>
 
-      <a mat-button [routerLink]="'/contacts'" *ngIf = "asideVisible">  Contacts </a>
       <a mat-button  *ngIf = "shouldShowNavbar"> Search Groups</a>
-      <a mat-button  *ngIf = "shouldShowNavbar"> Create a group</a>
       <a mat-button [routerLink]="'/signin'" *ngIf = "!shouldShowNavbar"  > Sign in</a>
       <a mat-button  [routerLink]="'/register'"*ngIf = "!shouldShowNavbar"> Sign up</a>
 

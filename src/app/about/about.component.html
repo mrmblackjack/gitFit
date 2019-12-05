@@ -20,9 +20,8 @@
                  It was inspiried by the idea of promoting health and fitness to sedentary computing science students,
                and what a better way than to track your progress online and to make it competetive, so friends can battle for the most achieved goals.  </p>
 
-
-                <a href="register" class="card-link">Sign up</a>
-                <a href="login" class="card-link">Sign in</a>
+               <a *ngIf="!shouldShowNavbar" href="signin" class="card-link">Sign in</a>
+               <a *ngIf="!shouldShowNavbar" href="register" class="card-link">Sign up</a>
               </div>
             </div>
 

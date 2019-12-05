@@ -1,3 +1,4 @@
+import { SignInserviceService } from './../sign-inservice.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(navbarService: SignInserviceService) { 
+    navbarService.currentVisibility.subscribe(visible => this.shouldShowNavbar = visible);
+
+  }
+
+  shouldShowNavbar;
 
   ngOnInit() {
   }
